@@ -48,8 +48,12 @@ module.exports = {
         new HtmlWebpackPlugin(), // html是主应用里渲染的，需要编译生成html
         new ModuleFederationPlugin({
             name: 'main_app', // 主应用名字
+            filename: 'main.js', // 编译生成的文件名，给子应用引用
             remotes: {
                 'sub1': 'sub1_app@http://localhost:3001/sub1.js', // <import时的别名>: <子应用名字@子应用对应文件路径>
+            },
+            exposes: {
+                './common': './src/common/index.js', // 主应用common模块，给子应用引用
             },
             shared: { // 第三方资源共享
                 'react': { singleton: true },

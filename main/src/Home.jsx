@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Tabs } from 'antd';
+import { Tabs } from 'antd';
+import { SearchButton } from './common';
 // import sub1Tab from 'sub1/tab';
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
     return (
         <div>
             <div>Main Home</div>
+            <SearchButton>Search Button</SearchButton>
             <Tabs activeKey={type} onChange={setType} items={items}></Tabs>
         </div>
     )

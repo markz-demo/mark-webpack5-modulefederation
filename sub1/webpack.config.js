@@ -46,6 +46,9 @@ module.exports = {
         new ModuleFederationPlugin({
             name: 'sub1_app', // 子应用名字，对应主应用中@前面的名字
             filename: 'sub1.js', // 编译生成的文件名，对应主应用中@后面的文件名
+            remotes: {
+                'main': 'main_app@http://localhost:3000/main.js', // <import时的别名>: <主应用名字@主应用common入口路径>
+            },
             exposes: {
                 './tab': './src/tab.jsx', // <被引用时的subpath>: <对应tab.jsx文件路径>
                 './nav': './src/nav.jsx',
